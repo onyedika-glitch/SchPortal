@@ -267,4 +267,955 @@
                                     <p class="text-3xl font-bold text-slate-800">2</p>
                                 </div>
                                 <div class="bg-cyan-50 p-3 rounded-full">
-                              
+                                    <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-slate-500">Assignments Due</p>
+                                    <p class="text-3xl font-bold text-slate-800">3</p>
+                                </div>
+                                <div class="bg-amber-50 p-3 rounded-full">
+                                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-slate-500">Current GPA</p>
+                                    <p class="text-3xl font-bold text-slate-800">3.8</p>
+                                </div>
+                                 <div class="bg-rose-50 p-3 rounded-full">
+                                    <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m-2 10v4m-2-2h4M5 12H3m4 0H5m14 0h-2m-2 0h2m-5 0h-2m2 0h2"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold mb-4 text-slate-700">Recent Announcements</h3>
+                                 <div id="dashboard-announcements" class="space-y-4"></div>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                 <h3 class="text-xl font-semibold mb-4 text-slate-700">Today's Schedule</h3>
+                                 <div id="dashboard-schedule" class="space-y-3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Announcements Page -->
+                    <div id="announcements-page" class="page hidden">
+                        <div class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
+                            <h2 class="text-3xl font-bold text-slate-800 mb-4 md:mb-0">Announcements</h2>
+                            <div class="relative">
+                                <input type="text" id="announcement-search" placeholder="Search announcements..." class="w-full md:w-64 pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                                 <svg class="w-5 h-5 text-slate-400 absolute top-1/2 left-3 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                        </div>
+                         <div id="announcements-container" class="space-y-6"></div>
+                    </div>
+
+                    <!-- Events Page -->
+                    <div id="events-page" class="page hidden">
+                         <div class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
+                            <h2 class="text-3xl font-bold text-slate-800 mb-4 md:mb-0">Upcoming Events</h2>
+                            <div class="relative">
+                                <input type="text" id="event-search" placeholder="Search events..." class="w-full md:w-64 pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500">
+                                 <svg class="w-5 h-5 text-slate-400 absolute top-1/2 left-3 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                        </div>
+                        <div id="events-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                    </div>
+                    
+                    <!-- Timetable Page -->
+                    <div id="timetable-page" class="page hidden">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-6">Class Timetable</h2>
+                        <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="p-4 font-semibold">Time</th>
+                                        <th class="p-4 font-semibold">Monday</th>
+                                        <th class="p-4 font-semibold">Tuesday</th>
+                                        <th class="p-4 font-semibold">Wednesday</th>
+                                        <th class="p-4 font-semibold">Thursday</th>
+                                        <th class="p-4 font-semibold">Friday</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="timetable-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Calendar Page -->
+                    <div id="calendar-page" class="page hidden">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-6">Events Calendar</h2>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="flex justify-between items-center mb-4">
+                                <button id="prev-month" class="p-2 rounded-full hover:bg-slate-100">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                                </button>
+                                <h3 id="month-year" class="text-xl font-semibold"></h3>
+                                <button id="next-month" class="p-2 rounded-full hover:bg-slate-100">
+                                   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                </button>
+                            </div>
+                            <div id="calendar-grid" class="grid grid-cols-7 gap-2"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Results Page -->
+                    <div id="results-page" class="page hidden">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-6">Exam Results</h2>
+                         <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="p-4 font-semibold">Course Code</th>
+                                        <th class="p-4 font-semibold">Course Title</th>
+                                        <th class="p-4 font-semibold">Credits</th>
+                                        <th class="p-4 font-semibold">Grade</th>
+                                        <th class="p-4 font-semibold">Semester</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="results-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Archive Page -->
+                    <div id="archive-page" class="page hidden">
+                         <h2 class="text-3xl font-bold text-slate-800 mb-6">Past Events Archive</h2>
+                         <div id="archive-container" class="space-y-4"></div>
+                    </div>
+                </div>
+
+                <!-- ADMIN PAGES -->
+                <div id="admin-pages" class="hidden">
+                    <!-- Admin Dashboard -->
+                    <div id="admin-dashboard-page" class="page">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-6">Admin Dashboard</h2>
+                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <p class="text-sm text-slate-500">Total Students</p>
+                                <p id="admin-total-students" class="text-3xl font-bold text-slate-800">0</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <p class="text-sm text-slate-500">Active Announcements</p>
+                                <p id="admin-total-announcements" class="text-3xl font-bold text-slate-800">0</p>
+                            </div>
+                             <div class="bg-white p-6 rounded-lg shadow-md">
+                                <p class="text-sm text-slate-500">Upcoming Events</p>
+                                <p id="admin-total-events" class="text-3xl font-bold text-slate-800">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Manage Announcements -->
+                    <div id="manage-announcements-page" class="page hidden">
+                        <div class="flex justify-between items-center mb-6">
+                             <h2 class="text-3xl font-bold text-slate-800">Manage Announcements</h2>
+                             <button id="add-announcement-btn" class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                Create New
+                             </button>
+                        </div>
+                        <div id="manage-announcements-container" class="space-y-4 bg-white p-4 rounded-lg shadow-md"></div>
+                    </div>
+
+                    <!-- Manage Events -->
+                    <div id="manage-events-page" class="page hidden">
+                        <div class="flex justify-between items-center mb-6">
+                             <h2 class="text-3xl font-bold text-slate-800">Manage Events</h2>
+                             <button id="add-event-btn" class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                                Create New
+                             </button>
+                        </div>
+                        <div id="manage-events-container" class="space-y-4 bg-white p-4 rounded-lg shadow-md"></div>
+                    </div>
+
+                    <!-- Manage Timetable -->
+                     <div id="manage-timetable-page" class="page hidden">
+                        <h2 class="text-3xl font-bold text-slate-800 mb-6">Manage Timetable</h2>
+                        <p class="text-slate-600 mb-4">Click on any class slot to edit or remove it.</p>
+                        <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="p-4 font-semibold">Time</th>
+                                        <th class="p-4 font-semibold">Monday</th>
+                                        <th class="p-4 font-semibold">Tuesday</th>
+                                        <th class="p-4 font-semibold">Wednesday</th>
+                                        <th class="p-4 font-semibold">Thursday</th>
+                                        <th class="p-4 font-semibold">Friday</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="manage-timetable-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                     <!-- Manage Results -->
+                     <div id="manage-results-page" class="page hidden">
+                         <h2 class="text-3xl font-bold text-slate-800 mb-6">Manage Results</h2>
+                         <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                            <h3 class="text-xl font-semibold text-slate-700 mb-4">Add New Result</h3>
+                             <form id="add-result-form" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <input type="text" id="result-code" placeholder="Course Code" class="form-input" required>
+                                <input type="text" id="result-title" placeholder="Course Title" class="form-input" required>
+                                <input type="number" id="result-credits" placeholder="Credits" class="form-input" required>
+                                <input type="text" id="result-grade" placeholder="Grade" class="form-input" required>
+                                <input type="text" id="result-semester" placeholder="Semester" class="form-input" required>
+                                <button type="submit" class="bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700 md:col-span-3">Add Result</button>
+                             </form>
+                         </div>
+                         <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="p-4 font-semibold">Course Code</th>
+                                        <th class="p-4 font-semibold">Title</th>
+                                        <th class="p-4 font-semibold">Grade</th>
+                                        <th class="p-4 font-semibold">Semester</th>
+                                        <th class="p-4 font-semibold">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="manage-results-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shared Profile Page -->
+                <div id="profile-page" class="page hidden">
+                    <h2 class="text-3xl font-bold text-slate-800 mb-6">User Profile</h2>
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                            <div class="relative">
+                                <img id="profile-avatar" class="w-32 h-32 rounded-full mb-4 md:mb-0" src="https://placehold.co/128x128/E2E8F0/4A5568?text=AV" alt="Profile picture">
+                                <button class="absolute bottom-0 right-0 bg-teal-600 p-2 rounded-full text-white hover:bg-teal-700">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z"></path></svg>
+                                </button>
+                            </div>
+                            <div class="flex-grow w-full">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                     <div>
+                                        <label class="text-sm font-medium text-slate-500">Full Name</label>
+                                        <input type="text" id="profile-name" class="profile-input" disabled>
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-medium text-slate-500">ID</label>
+                                        <input type="text" id="profile-id" class="profile-input" disabled>
+                                    </div>
+                                    <div>
+                                        <label class="text-sm font-medium text-slate-500">Email Address</label>
+                                        <input type="email" id="profile-email" class="profile-input" disabled>
+                                    </div>
+                                    <div class="profile-student-field">
+                                        <label class="text-sm font-medium text-slate-500">Phone Number</label>
+                                        <input type="tel" id="profile-phone" value="+1 (555) 123-4567" class="profile-input" disabled>
+                                    </div>
+                                    <div class="profile-student-field">
+                                        <label class="text-sm font-medium text-slate-500">Major</label>
+                                        <input type="text" id="profile-major" value="Computer Science" class="profile-input" disabled>
+                                    </div>
+                                    <div class="profile-student-field">
+                                        <label class="text-sm font-medium text-slate-500">Enrollment Year</label>
+                                        <input type="text" id="profile-year" value="2022" class="profile-input" disabled>
+                                    </div>
+                                </div>
+                                <div class="mt-8 text-right">
+                                    <button id="edit-profile-btn" class="px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700">Edit Profile</button>
+                                    <button id="save-profile-btn" class="hidden px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Generic Modal -->
+    <div id="modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden" style="z-index: 50;">
+        <div class="modal-content bg-white w-full max-w-lg rounded-lg shadow-xl p-6 transform scale-95">
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h3 id="modal-title" class="text-xl font-semibold">Modal Title</h3>
+                <button id="modal-close-btn" class="p-1 rounded-full hover:bg-slate-200">
+                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="modal-body">
+                <!-- Modal content goes here -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Mock Data - In a real app, this would come from a server/database
+            let MOCK_DATA = {
+                announcements: [
+                    { id: 1, title: "Final Exam Schedule Released", content: "The final exam schedule for the Fall 2025 semester has been released. Please check the student portal for your specific exam dates and times.", date: "2025-10-10", author: "Registrar's Office" },
+                    { id: 2, title: "Library Hours Extended", content: "To accommodate students studying for finals, the main library will have extended hours, staying open until 2 AM from October 20th to November 5th.", date: "2025-10-08", author: "University Library" },
+                    { id: 3, title: "Career Fair Next Week", content: "Don't miss the annual career fair on October 22nd in the Grand Hall. Over 50 top companies will be attending. Dress professionally and bring your resume!", date: "2025-10-14", author: "Career Services" },
+                    { id: 4, title: "System Maintenance Downtime", content: "The student portal will be temporarily unavailable for scheduled maintenance this Saturday from 1 AM to 4 AM.", date: "2025-10-12", author: "IT Department" },
+                ],
+                events: [
+                    { id: 1, title: "Guest Lecture: AI in Modern Science", date: "2025-10-20", time: "3:00 PM", location: "Science Hall, Room 101", description: "Dr. Evelyn Reed will discuss the transformative impact of AI on scientific research.", image: "https://placehold.co/600x400/0d9488/FFFFFF?text=AI+Lecture" },
+                    { id: 2, title: "Annual University Music Fest", date: "2025-10-25", time: "6:00 PM - 10:00 PM", location: "University Lawn", description: "Join us for a night of live music from student bands, food trucks, and fun activities.", image: "https://placehold.co/600x400/06b6d4/FFFFFF?text=Music+Fest" },
+                    { id: 3, title: "Coding Hackathon 'CodeWave'", date: "2025-11-01", time: "9:00 AM (24 hours)", location: "Engineering Building", description: "Compete with fellow students in a 24-hour coding challenge. Prizes for top teams!", image: "https://placehold.co/600x400/f59e0b/FFFFFF?text=Hackathon" },
+                ],
+                archivedEvents: [
+                    { id: 4, title: "Welcome Week Kick-off", date: "2025-09-01", location: "Main Quad", description: "Started the semester with fun games, free food, and department introductions." },
+                    { id: 5, title: "Study Abroad Information Session", date: "2025-09-15", location: "Global Studies Center", description: "A session covering all available study abroad programs for the next academic year." }
+                ],
+                timetable: [
+                    { time: "09:00 - 10:30", monday: { course: "CS101", room: "A-101" }, tuesday: {}, wednesday: { course: "CS101", room: "A-101" }, thursday: {}, friday: { course: "MA203", room: "B-205" } },
+                    { time: "11:00 - 12:30", monday: {}, tuesday: { course: "PHY105", room: "C-Lab 2" }, wednesday: {}, thursday: { course: "PHY105", room: "C-Lab 2" }, friday: {} },
+                    { time: "01:00 - 02:30", monday: { course: "ENG101", room: "D-301" }, tuesday: {}, wednesday: { course: "ENG101", room: "D-301" }, thursday: {}, friday: {} },
+                    { time: "03:00 - 04:30", monday: {}, tuesday: { course: "CS301", room: "E-110" }, wednesday: {}, thursday: { course: "CS301", room: "E-110" }, friday: {} },
+                ],
+                results: [
+                    { id: 1, code: "CS101", title: "Intro to Computer Science", credits: 3, grade: "A", semester: "Fall 2024" },
+                    { id: 2, code: "MA101", title: "Calculus I", credits: 4, grade: "A-", semester: "Fall 2024" },
+                    { id: 3, code: "PHY101", title: "General Physics I", credits: 4, grade: "B+", semester: "Fall 2024" },
+                    { id: 4, code: "ENG102", title: "Academic Writing", credits: 3, grade: "A", semester: "Spring 2025" },
+                    { id: 5, code: "CS201", title: "Data Structures", credits: 3, grade: "B+", semester: "Spring 2025" },
+                ],
+                dashboardSchedule: [
+                    { time: "09:00 AM", course: "CS101: Intro to CS", location: "Room A-101" },
+                    { time: "01:00 PM", course: "ENG101: Academic Writing", location: "Room D-301" },
+                ]
+            };
+            
+            // Extend DayJS plugins
+            dayjs.extend(window.dayjs_plugin_weekday);
+            dayjs.extend(window.dayjs_plugin_weekOfYear);
+            dayjs.extend(window.dayjs_plugin_relativeTime);
+
+            // --- GLOBAL STATE ---
+            let users = JSON.parse(localStorage.getItem('portalUsers')) || [];
+            let currentUser = null;
+            let isAdmin = false;
+
+            // --- DOM ELEMENTS ---
+            const authPage = document.getElementById('auth-page');
+            const appContainer = document.getElementById('app-container');
+            
+            // Auth elements
+            const studentTab = document.getElementById('student-tab');
+            const adminTab = document.getElementById('admin-tab');
+            const studentAuthForms = document.getElementById('student-auth-forms');
+            const adminAuthForm = document.getElementById('admin-auth-form');
+            const authTitle = document.getElementById('auth-title');
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const adminLoginForm = document.getElementById('admin-login-form');
+            const authSwitchLink = document.getElementById('auth-switch-link');
+            const authSuccessMessage = document.getElementById('auth-success');
+            const authErrorMessage = document.getElementById('auth-error');
+            
+            // Nav elements
+            const navLinks = document.querySelectorAll('.nav-link');
+            const studentNav = document.getElementById('student-nav');
+            const adminNav = document.getElementById('admin-nav');
+            const pageTitle = document.getElementById('page-title');
+            const logoutBtn = document.getElementById('logout-btn');
+            const menuBtn = document.getElementById('menu-btn');
+            const sidebar = document.querySelector('.sidebar');
+
+            // Page containers
+            const studentPagesContainer = document.getElementById('student-pages');
+            const adminPagesContainer = document.getElementById('admin-pages');
+            const pages = document.querySelectorAll('.page');
+            
+            // --- AUTHENTICATION & ROLE HANDLING ---
+            const showAuthMessage = (message, isError = false) => {
+                authErrorMessage.textContent = '';
+                authSuccessMessage.textContent = '';
+                if (isError) {
+                    authErrorMessage.textContent = message;
+                } else {
+                    authSuccessMessage.textContent = message;
+                }
+            };
+
+            const switchAuthTabs = (showAdmin) => {
+                if(showAdmin) {
+                    adminTab.classList.add('border-teal-600', 'text-teal-600');
+                    adminTab.classList.remove('text-slate-500');
+                    studentTab.classList.remove('border-teal-600', 'text-teal-600');
+                    studentTab.classList.add('text-slate-500');
+                    studentAuthForms.classList.add('hidden');
+                    adminAuthForm.classList.remove('hidden');
+                    authTitle.textContent = "Admin Login";
+                } else {
+                    studentTab.classList.add('border-teal-600', 'text-teal-600');
+                    studentTab.classList.remove('text-slate-500');
+                    adminTab.classList.remove('border-teal-600', 'text-teal-600');
+                    adminTab.classList.add('text-slate-500');
+                    studentAuthForms.classList.remove('hidden');
+                    adminAuthForm.classList.add('hidden');
+                    authTitle.textContent = "Student Login";
+                }
+                 showAuthMessage('');
+            };
+            
+            studentTab.addEventListener('click', () => switchAuthTabs(false));
+            adminTab.addEventListener('click', () => switchAuthTabs(true));
+
+            authSwitchLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                showAuthMessage('');
+                const isLoginFormVisible = !loginForm.classList.contains('hidden');
+                loginForm.classList.toggle('hidden', !isLoginFormVisible);
+                registerForm.classList.toggle('hidden', isLoginFormVisible);
+                document.getElementById('auth-switch-text').textContent = isLoginFormVisible ? "Already have an account?" : "Don't have an account?";
+                authSwitchLink.textContent = isLoginFormVisible ? "Login" : "Register";
+                authTitle.textContent = isLoginFormVisible ? "Create Student Account" : "Student Login";
+            });
+
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('reg-name').value;
+                const email = document.getElementById('reg-email').value;
+                const password = document.getElementById('reg-password').value;
+
+                if (users.find(u => u.email === email)) {
+                    showAuthMessage('A user with this email already exists.', true);
+                    return;
+                }
+                
+                const studentId = Math.floor(10000 + Math.random() * 90000).toString();
+                users.push({ name, email, password, studentId });
+                localStorage.setItem('portalUsers', JSON.stringify(users));
+
+                registerForm.reset();
+                showAuthMessage('Registration successful! Please log in.');
+                authSwitchLink.click();
+            });
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const user = users.find(u => u.email === email && u.password === password);
+
+                if (user) {
+                    currentUser = user;
+                    isAdmin = false;
+                    initializeAppUI();
+                    navigateTo('dashboard');
+                } else {
+                    showAuthMessage('Invalid email or password.', true);
+                }
+            });
+            
+            adminLoginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                 const email = document.getElementById('admin-email').value;
+                const password = document.getElementById('admin-password').value;
+                if (email === 'admin@university.edu' && password === 'admin123') {
+                    currentUser = { name: "Admin User", email: "admin@university.edu", studentId: "ADMIN" };
+                    isAdmin = true;
+                    initializeAppUI();
+                    navigateTo('admin-dashboard');
+                } else {
+                    showAuthMessage('Invalid admin credentials.', true);
+                }
+            });
+
+            logoutBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentUser = null;
+                isAdmin = false;
+                appContainer.classList.add('hidden');
+                authPage.classList.remove('hidden');
+                loginForm.reset();
+                adminLoginForm.reset();
+                showAuthMessage('');
+            });
+            
+             const initializeAppUI = () => {
+                updateUserInfo();
+                authPage.classList.add('hidden');
+                appContainer.classList.remove('hidden');
+
+                if (isAdmin) {
+                    studentNav.classList.add('hidden');
+                    adminNav.classList.remove('hidden');
+                    studentPagesContainer.classList.add('hidden');
+                    adminPagesContainer.classList.remove('hidden');
+                    document.querySelectorAll('.profile-student-field').forEach(el => el.classList.add('hidden'));
+                } else {
+                    studentNav.classList.remove('hidden');
+                    adminNav.classList.add('hidden');
+                    studentPagesContainer.classList.remove('hidden');
+                    adminPagesContainer.classList.add('hidden');
+                     document.querySelectorAll('.profile-student-field').forEach(el => el.classList.remove('hidden'));
+                }
+            };
+            
+            const updateUserInfo = () => {
+                if (!currentUser) return;
+                const initials = currentUser.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                const avatarUrl = `https://placehold.co/128x128/${isAdmin ? 'f43f5e' : '0d9488'}/FFFFFF?text=${initials}`;
+                
+                document.getElementById('header-user-name').textContent = currentUser.name;
+                document.getElementById('header-user-id').textContent = `ID: ${currentUser.studentId}`;
+                document.getElementById('header-avatar').src = avatarUrl.replace('128x128', '40x40');
+                document.getElementById('profile-name').value = currentUser.name;
+                document.getElementById('profile-id').value = currentUser.studentId;
+                document.getElementById('profile-email').value = currentUser.email;
+                document.getElementById('profile-avatar').src = avatarUrl;
+            };
+
+            // --- NAVIGATION ---
+            const navigateTo = (pageId) => {
+                pages.forEach(p => p.classList.add('hidden'));
+                document.getElementById(`${pageId}-page`).classList.remove('hidden');
+                
+                const activeLinks = isAdmin ? '.nav-link.admin' : '.nav-link.student';
+                document.querySelectorAll(activeLinks).forEach(link => {
+                    link.classList.remove('bg-slate-200', 'text-slate-700');
+                    link.classList.add('text-slate-600', 'hover:bg-slate-100');
+                    if (link.getAttribute('href') === `#${pageId}`) {
+                        link.classList.add('bg-slate-200', 'text-slate-700');
+                        link.classList.remove('text-slate-600', 'hover:bg-slate-100');
+                    }
+                });
+
+                let title = pageId.charAt(0).toUpperCase() + pageId.slice(1);
+                title = title.replace('Manage-', 'Manage ').replace('Admin-', 'Admin ');
+                pageTitle.textContent = title;
+                if (sidebar.classList.contains('open')) sidebar.classList.remove('open');
+            };
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (e.currentTarget.id === 'logout-btn') return;
+                    e.preventDefault();
+                    const pageId = e.currentTarget.getAttribute('href').substring(1);
+                    navigateTo(pageId);
+                });
+            });
+            
+            menuBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
+
+            // --- DYNAMIC CONTENT RENDERING (STUDENT) ---
+            const announcementsContainer = document.getElementById('announcements-container');
+            const renderAnnouncements = (filter = '') => {
+                const filtered = MOCK_DATA.announcements.filter(a => 
+                    a.title.toLowerCase().includes(filter.toLowerCase()) || 
+                    a.content.toLowerCase().includes(filter.toLowerCase())
+                );
+                announcementsContainer.innerHTML = filtered.length === 0 
+                    ? `<p class="text-slate-500">No announcements found.</p>`
+                    : filtered.map(ann => `
+                        <div class="bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+                            <div class="flex justify-between items-start">
+                                 <div>
+                                    <h3 class="text-xl font-bold text-slate-800">${ann.title}</h3>
+                                    <p class="text-sm text-slate-500">By ${ann.author} on ${ann.date}</p>
+                                </div>
+                                <span class="text-xs font-semibold bg-teal-50 text-teal-800 px-2 py-1 rounded-full">${dayjs(ann.date).fromNow()}</span>
+                            </div>
+                            <p class="mt-4 text-slate-600">${ann.content}</p>
+                        </div>
+                    `).join('');
+            };
+            document.getElementById('announcement-search').addEventListener('input', (e) => renderAnnouncements(e.target.value));
+
+            const eventsContainer = document.getElementById('events-container');
+            const renderEvents = (filter = '') => {
+                const filtered = MOCK_DATA.events.filter(e => 
+                    e.title.toLowerCase().includes(filter.toLowerCase()) || 
+                    e.description.toLowerCase().includes(filter.toLowerCase())
+                );
+                eventsContainer.innerHTML = filtered.length === 0
+                    ? `<p class="text-slate-500">No events found.</p>`
+                    : filtered.map(event => `
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden transition-shadow duration-300 hover:shadow-xl">
+                            <img src="${event.image}" alt="${event.title}" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-slate-800 mb-2">${event.title}</h3>
+                                <p class="text-slate-600 text-sm mb-4">${event.description}</p>
+                                <div class="flex items-center text-slate-500 text-sm">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z"/></svg>
+                                    <span>${event.date} at ${event.time}</span>
+                                </div>
+                                 <div class="flex items-center text-slate-500 text-sm mt-2">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657 13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+                                    <span>${event.location}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+            };
+            document.getElementById('event-search').addEventListener('input', (e) => renderEvents(e.target.value));
+
+            const timetableBody = document.getElementById('timetable-body');
+            const renderTimetable = () => {
+                timetableBody.innerHTML = MOCK_DATA.timetable.map(row => `
+                    <tr class="border-b border-slate-200">
+                        <td class="p-4 font-medium text-slate-600">${row.time}</td>
+                        <td class="p-4">${row.monday.course ? `<div class="bg-teal-50 text-teal-800 p-2 rounded-lg text-center"><p class="font-semibold">${row.monday.course}</p><p class="text-sm">${row.monday.room}</p></div>` : ''}</td>
+                        <td class="p-4">${row.tuesday.course ? `<div class="bg-cyan-50 text-cyan-800 p-2 rounded-lg text-center"><p class="font-semibold">${row.tuesday.course}</p><p class="text-sm">${row.tuesday.room}</p></div>` : ''}</td>
+                        <td class="p-4">${row.wednesday.course ? `<div class="bg-teal-50 text-teal-800 p-2 rounded-lg text-center"><p class="font-semibold">${row.wednesday.course}</p><p class="text-sm">${row.wednesday.room}</p></div>` : ''}</td>
+                        <td class="p-4">${row.thursday.course ? `<div class="bg-cyan-50 text-cyan-800 p-2 rounded-lg text-center"><p class="font-semibold">${row.thursday.course}</p><p class="text-sm">${row.thursday.room}</p></div>` : ''}</td>
+                        <td class="p-4">${row.friday.course ? `<div class="bg-amber-50 text-amber-800 p-2 rounded-lg text-center"><p class="font-semibold">${row.friday.course}</p><p class="text-sm">${row.friday.room}</p></div>` : ''}</td>
+                    </tr>
+                `).join('');
+            };
+
+            const resultsBody = document.getElementById('results-body');
+            const renderResults = () => {
+                resultsBody.innerHTML = MOCK_DATA.results.map(res => `
+                    <tr class="border-b border-slate-200 hover:bg-slate-50">
+                        <td class="p-4 font-medium text-slate-700">${res.code}</td>
+                        <td class="p-4 text-slate-600">${res.title}</td>
+                        <td class="p-4 text-slate-600">${res.credits}</td>
+                        <td class="p-4 font-semibold ${res.grade.startsWith('A') ? 'text-emerald-600' : 'text-amber-600'}">${res.grade}</td>
+                        <td class="p-4 text-slate-600">${res.semester}</td>
+                    </tr>
+                `).join('');
+            };
+            
+             const archiveContainer = document.getElementById('archive-container');
+            const renderArchive = () => {
+                archiveContainer.innerHTML = MOCK_DATA.archivedEvents.map(event => `
+                    <div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-slate-400">
+                        <h3 class="font-semibold text-slate-800">${event.title}</h3>
+                        <p class="text-sm text-slate-500">${event.date} - ${event.location}</p>
+                        <p class="text-sm text-slate-600 mt-2">${event.description}</p>
+                    </div>
+                `).join('');
+            };
+
+            const renderDashboard = () => {
+                const dashboardAnnouncements = document.getElementById('dashboard-announcements');
+                dashboardAnnouncements.innerHTML = MOCK_DATA.announcements.slice(0, 3).map(ann => `
+                    <div class="border-b border-slate-200 pb-3 last:border-b-0">
+                        <p class="font-semibold text-slate-700">${ann.title}</p>
+                        <p class="text-sm text-slate-500">${ann.date}</p>
+                    </div>
+                `).join('');
+
+                const dashboardSchedule = document.getElementById('dashboard-schedule');
+                dashboardSchedule.innerHTML = MOCK_DATA.dashboardSchedule.map(item => `
+                    <div class="flex items-center">
+                        <div class="w-16 text-right mr-4">
+                            <span class="text-sm font-semibold text-teal-600">${item.time}</span>
+                        </div>
+                        <div class="flex-1 border-l-2 border-teal-200 pl-4">
+                            <p class="font-medium text-slate-800">${item.course}</p>
+                            <p class="text-sm text-slate-500">${item.location}</p>
+                        </div>
+                    </div>
+                `).join('');
+            };
+
+            let currentDate = dayjs();
+            const calendarGrid = document.getElementById('calendar-grid');
+            const monthYearEl = document.getElementById('month-year');
+            
+            const renderCalendar = () => {
+                const calendarEvents = MOCK_DATA.events.map(e => ({...e, day: dayjs(e.date).date()}));
+                monthYearEl.textContent = currentDate.format("MMMM YYYY");
+                calendarGrid.innerHTML = '';
+                
+                const daysInMonth = currentDate.daysInMonth();
+                const firstDayOfMonth = currentDate.startOf('month').day();
+                
+                const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                daysOfWeek.forEach(day => calendarGrid.innerHTML += `<div class="font-semibold text-center text-slate-600 p-2">${day}</div>`);
+
+                for (let i = 0; i < firstDayOfMonth; i++) calendarGrid.innerHTML += `<div></div>`;
+
+                for (let i = 1; i <= daysInMonth; i++) {
+                    let isToday = (currentDate.date() === i && dayjs().isSame(currentDate, 'month')) ? 'bg-teal-600 text-white' : 'hover:bg-slate-100';
+                    let dayEvents = calendarEvents.filter(e => dayjs(e.date).isSame(currentDate.date(i), 'day'));
+                    let eventDots = dayEvents.length > 0 ? `<div class="flex justify-center mt-1">${dayEvents.map(() => `<span class="h-2 w-2 bg-cyan-500 rounded-full mx-0.5"></span>`).join('')}</div>` : '';
+
+                    calendarGrid.innerHTML += `<div class="text-center p-2 rounded-full cursor-pointer ${isToday}">${i}${eventDots}</div>`;
+                }
+            };
+            
+            document.getElementById('prev-month').addEventListener('click', () => { currentDate = currentDate.subtract(1, 'month'); renderCalendar(); });
+            document.getElementById('next-month').addEventListener('click', () => { currentDate = currentDate.add(1, 'month'); renderCalendar(); });
+
+            // --- DYNAMIC CONTENT RENDERING (ADMIN) ---
+            const renderAdminDashboard = () => {
+                document.getElementById('admin-total-students').textContent = users.length;
+                document.getElementById('admin-total-announcements').textContent = MOCK_DATA.announcements.length;
+                document.getElementById('admin-total-events').textContent = MOCK_DATA.events.length;
+            };
+
+            const manageAnnouncementsContainer = document.getElementById('manage-announcements-container');
+            const renderManageAnnouncements = () => {
+                manageAnnouncementsContainer.innerHTML = MOCK_DATA.announcements.map(ann => `
+                     <div class="flex justify-between items-center p-3 border-b border-slate-200">
+                        <div>
+                            <p class="font-semibold text-slate-800">${ann.title}</p>
+                            <p class="text-sm text-slate-500">${ann.author} - ${ann.date}</p>
+                        </div>
+                        <button class="delete-announcement-btn text-rose-500 hover:text-rose-700" data-id="${ann.id}">
+                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </div>
+                `).join('');
+                document.querySelectorAll('.delete-announcement-btn').forEach(btn => btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.currentTarget.dataset.id);
+                    MOCK_DATA.announcements = MOCK_DATA.announcements.filter(a => a.id !== id);
+                    renderAll();
+                }));
+            };
+
+            const manageEventsContainer = document.getElementById('manage-events-container');
+             const renderManageEvents = () => {
+                manageEventsContainer.innerHTML = MOCK_DATA.events.map(event => `
+                     <div class="flex justify-between items-center p-3 border-b border-slate-200">
+                        <div>
+                            <p class="font-semibold text-slate-800">${event.title}</p>
+                            <p class="text-sm text-slate-500">${event.date} - ${event.location}</p>
+                        </div>
+                        <button class="delete-event-btn text-rose-500 hover:text-rose-700" data-id="${event.id}">
+                           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </div>
+                `).join('');
+                 document.querySelectorAll('.delete-event-btn').forEach(btn => btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.currentTarget.dataset.id);
+                    MOCK_DATA.events = MOCK_DATA.events.filter(ev => ev.id !== id);
+                    renderAll();
+                }));
+            };
+
+             const manageTimetableBody = document.getElementById('manage-timetable-body');
+             const renderManageTimetable = () => {
+                manageTimetableBody.innerHTML = MOCK_DATA.timetable.map((row, rowIndex) => `
+                    <tr class="border-b border-slate-200">
+                        <td class="p-4 font-medium text-slate-600">${row.time}</td>
+                        ${['monday', 'tuesday', 'wednesday', 'thursday', 'friday'].map(day => `
+                            <td class="p-2">
+                                <div class="timetable-cell p-2 rounded-lg text-center hover:bg-slate-100" data-row="${rowIndex}" data-day="${day}">
+                                    ${row[day].course 
+                                        ? `<p class="font-semibold">${row[day].course}</p><p class="text-sm">${row[day].room}</p>` 
+                                        : '<span class="text-slate-400">Empty</span>'}
+                                </div>
+                            </td>`).join('')
+                        }
+                    </tr>
+                `).join('');
+                document.querySelectorAll('.timetable-cell').forEach(cell => cell.addEventListener('click', (e) => {
+                    const rowIndex = e.currentTarget.dataset.row;
+                    const day = e.currentTarget.dataset.day;
+                    openTimetableModal(rowIndex, day);
+                }));
+            };
+
+            const manageResultsBody = document.getElementById('manage-results-body');
+            const renderManageResults = () => {
+                manageResultsBody.innerHTML = MOCK_DATA.results.map(res => `
+                    <tr class="border-b border-slate-200">
+                        <td class="p-4">${res.code}</td>
+                        <td class="p-4">${res.title}</td>
+                        <td class="p-4">${res.grade}</td>
+                        <td class="p-4">${res.semester}</td>
+                        <td class="p-4">
+                            <button class="delete-result-btn text-rose-500 hover:text-rose-700" data-id="${res.id}">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0 1 16.138 21H7.862a2 2 0 0 1-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3M4 7h16"/></svg>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+                document.querySelectorAll('.delete-result-btn').forEach(btn => btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.currentTarget.dataset.id);
+                    MOCK_DATA.results = MOCK_DATA.results.filter(r => r.id !== id);
+                    renderAll();
+                }));
+            };
+
+             document.getElementById('add-result-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newResult = {
+                    id: Date.now(),
+                    code: document.getElementById('result-code').value,
+                    title: document.getElementById('result-title').value,
+                    credits: parseInt(document.getElementById('result-credits').value),
+                    grade: document.getElementById('result-grade').value,
+                    semester: document.getElementById('result-semester').value
+                };
+                MOCK_DATA.results.push(newResult);
+                renderAll();
+                e.target.reset();
+            });
+
+
+            // --- MODAL HANDLING ---
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+
+            const openModal = (title, formHTML) => {
+                modalTitle.textContent = title;
+                modalBody.innerHTML = formHTML;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.querySelector('.modal-content').classList.replace('scale-95', 'scale-100');
+                    modal.classList.replace('opacity-0', 'opacity-100');
+                }, 10);
+            };
+
+            const closeModal = () => {
+                modal.querySelector('.modal-content').classList.replace('scale-100', 'scale-95');
+                modal.classList.replace('opacity-100', 'opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            };
+
+            modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+            document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+            
+            // Announcement Modal
+            document.getElementById('add-announcement-btn').addEventListener('click', () => {
+                openModal('Create Announcement', `
+                    <form id="announcement-form">
+                        <div class="mb-4"><input type="text" placeholder="Title" id="ann-title" class="w-full form-input" required></div>
+                        <div class="mb-4"><textarea placeholder="Content" id="ann-content" class="w-full form-input" rows="4" required></textarea></div>
+                        <button type="submit" class="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700">Submit</button>
+                    </form>
+                `);
+                document.getElementById('announcement-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const newAnnouncement = {
+                        id: Date.now(),
+                        title: document.getElementById('ann-title').value,
+                        content: document.getElementById('ann-content').value,
+                        date: dayjs().format('YYYY-MM-DD'),
+                        author: currentUser.name
+                    };
+                    MOCK_DATA.announcements.unshift(newAnnouncement);
+                    closeModal();
+                    renderAll();
+                });
+            });
+
+             // Event Modal
+            document.getElementById('add-event-btn').addEventListener('click', () => {
+                openModal('Create Event', `
+                    <form id="event-form" class="space-y-4">
+                        <input type="text" placeholder="Title" id="event-title" class="form-input" required>
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="date" id="event-date" class="form-input" required>
+                            <input type="text" placeholder="Time (e.g., 3:00 PM)" id="event-time" class="form-input" required>
+                        </div>
+                        <input type="text" placeholder="Location" id="event-location" class="form-input" required>
+                        <input type="text" placeholder="Image URL" id="event-image" class="form-input">
+                        <textarea placeholder="Description" id="event-desc" class="form-input" rows="3" required></textarea>
+                        <button type="submit" class="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700">Submit</button>
+                    </form>
+                `);
+                 document.getElementById('event-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const newEvent = {
+                        id: Date.now(),
+                        title: document.getElementById('event-title').value,
+                        date: document.getElementById('event-date').value,
+                        time: document.getElementById('event-time').value,
+                        location: document.getElementById('event-location').value,
+                        image: document.getElementById('event-image').value || 'https://placehold.co/600x400/06b6d4/FFFFFF?text=Event',
+                        description: document.getElementById('event-desc').value,
+                    };
+                    MOCK_DATA.events.unshift(newEvent);
+                    closeModal();
+                    renderAll();
+                });
+            });
+
+             // Timetable Modal
+            const openTimetableModal = (rowIndex, day) => {
+                const entry = MOCK_DATA.timetable[rowIndex][day];
+                openModal(`Edit Slot: ${day.charAt(0).toUpperCase() + day.slice(1)} at ${MOCK_DATA.timetable[rowIndex].time}`, `
+                    <form id="timetable-form" class="space-y-4">
+                         <input type="text" placeholder="Course Code (e.g. CS101)" id="tt-course" value="${entry.course || ''}" class="form-input">
+                         <input type="text" placeholder="Room Number (e.g. A-101)" id="tt-room" value="${entry.room || ''}" class="form-input">
+                        <div class="flex justify-end space-x-3">
+                             <button type="button" id="tt-remove" class="bg-rose-600 text-white px-4 py-2 rounded-lg hover:bg-rose-700">Remove</button>
+                             <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700">Save</button>
+                        </div>
+                    </form>
+                `);
+
+                document.getElementById('timetable-form').addEventListener('submit', e => {
+                    e.preventDefault();
+                    MOCK_DATA.timetable[rowIndex][day] = {
+                        course: document.getElementById('tt-course').value,
+                        room: document.getElementById('tt-room').value,
+                    };
+                    closeModal();
+                    renderAll();
+                });
+
+                document.getElementById('tt-remove').addEventListener('click', () => {
+                    MOCK_DATA.timetable[rowIndex][day] = {};
+                    closeModal();
+                    renderAll();
+                });
+            };
+
+            // --- PROFILE PAGE ---
+            const editProfileBtn = document.getElementById('edit-profile-btn');
+            const saveProfileBtn = document.getElementById('save-profile-btn');
+            const profileInputs = document.querySelectorAll('#profile-page .profile-input');
+            
+            editProfileBtn.addEventListener('click', () => {
+                profileInputs.forEach(input => {
+                    if(input.id !== 'profile-id' && input.id !== 'profile-email') input.disabled = false;
+                });
+                editProfileBtn.classList.add('hidden');
+                saveProfileBtn.classList.remove('hidden');
+            });
+
+            saveProfileBtn.addEventListener('click', () => {
+                profileInputs.forEach(input => input.disabled = true);
+                editProfileBtn.classList.remove('hidden');
+                saveProfileBtn.classList.add('hidden');
+                // In a real app, save data here
+            });
+            
+             const renderAll = () => {
+                // Student view
+                renderAnnouncements();
+                renderEvents();
+                renderTimetable();
+                renderResults();
+                renderArchive();
+                renderDashboard();
+                renderCalendar();
+                // Admin view
+                renderAdminDashboard();
+                renderManageAnnouncements();
+                renderManageEvents();
+                renderManageTimetable();
+                renderManageResults();
+            };
+
+            // --- INITIAL LOAD ---
+            renderAll();
+            
+            // Add global class for form inputs for easier styling
+            document.querySelectorAll('input, textarea').forEach(el => {
+                if(!el.classList.contains('profile-input')) {
+                     el.classList.add('bg-slate-100', 'border', 'border-slate-300', 'rounded-lg', 'focus:outline-none', 'focus:ring-2', 'focus:ring-teal-500', 'p-2', 'w-full');
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
+
