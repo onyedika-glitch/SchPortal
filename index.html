@@ -81,7 +81,7 @@
             </div>
             
             <h2 id="auth-title" class="text-3xl font-bold text-center text-slate-800">Student Login</h2>
-            <div id="auth-message-container" class="text-center">
+            <div id="auth-message-container" class="text-center min-h-[24px]">
                 <p id="auth-success" class="text-green-600 font-medium"></p>
                 <p id="auth-error" class="text-red-600 font-medium"></p>
             </div>
@@ -645,7 +645,7 @@
 
             const switchAuthTabs = (showAdmin) => {
                 if(showAdmin) {
-                    adminTab.classList.add('border-teal-600', 'text-teal-600');
+                    adminTab.classList.add('border-rose-600', 'text-rose-600');
                     adminTab.classList.remove('text-slate-500');
                     studentTab.classList.remove('border-teal-600', 'text-teal-600');
                     studentTab.classList.add('text-slate-500');
@@ -655,7 +655,7 @@
                 } else {
                     studentTab.classList.add('border-teal-600', 'text-teal-600');
                     studentTab.classList.remove('text-slate-500');
-                    adminTab.classList.remove('border-teal-600', 'text-teal-600');
+                    adminTab.classList.remove('border-rose-600', 'text-rose-600');
                     adminTab.classList.add('text-slate-500');
                     studentAuthForms.classList.remove('hidden');
                     adminAuthForm.classList.add('hidden');
@@ -671,8 +671,8 @@
                 e.preventDefault();
                 showAuthMessage('');
                 const isLoginFormVisible = !loginForm.classList.contains('hidden');
-                loginForm.classList.toggle('hidden', !isLoginFormVisible);
-                registerForm.classList.toggle('hidden', isLoginFormVisible);
+                loginForm.classList.toggle('hidden');
+                registerForm.classList.toggle('hidden');
                 document.getElementById('auth-switch-text').textContent = isLoginFormVisible ? "Already have an account?" : "Don't have an account?";
                 authSwitchLink.textContent = isLoginFormVisible ? "Login" : "Register";
                 authTitle.textContent = isLoginFormVisible ? "Create Student Account" : "Student Login";
@@ -695,14 +695,17 @@
 
                 registerForm.reset();
                 showAuthMessage('Registration successful! Please log in.');
-                authSwitchLink.click();
+                authSwitchLink.click(); // Switch to login form
             });
 
             loginForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
-                const user = users.find(u => u.email === email && u.password === password);
+                
+                // Get the latest list of users from localStorage before checking
+                const currentUsers = JSON.parse(localStorage.getItem('portalUsers')) || [];
+                const user = currentUsers.find(u => u.email === email && u.password === password);
 
                 if (user) {
                     currentUser = user;
@@ -737,6 +740,7 @@
                 loginForm.reset();
                 adminLoginForm.reset();
                 showAuthMessage('');
+                switchAuthTabs(false); // Reset to student tab on logout
             });
             
              const initializeAppUI = () => {
@@ -776,7 +780,10 @@
             // --- NAVIGATION ---
             const navigateTo = (pageId) => {
                 pages.forEach(p => p.classList.add('hidden'));
-                document.getElementById(`${pageId}-page`).classList.remove('hidden');
+                const targetPage = document.getElementById(`${pageId}-page`);
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                }
                 
                 const activeLinks = isAdmin ? '.nav-link.admin' : '.nav-link.student';
                 document.querySelectorAll(activeLinks).forEach(link => {
@@ -788,8 +795,8 @@
                     }
                 });
 
-                let title = pageId.charAt(0).toUpperCase() + pageId.slice(1);
-                title = title.replace('Manage-', 'Manage ').replace('Admin-', 'Admin ');
+                let title = pageId.replace(/-/g, ' ');
+                title = title.charAt(0).toUpperCase() + title.slice(1);
                 pageTitle.textContent = title;
                 if (sidebar.classList.contains('open')) sidebar.classList.remove('open');
             };
@@ -949,7 +956,8 @@
 
             // --- DYNAMIC CONTENT RENDERING (ADMIN) ---
             const renderAdminDashboard = () => {
-                document.getElementById('admin-total-students').textContent = users.length;
+                const currentUsers = JSON.parse(localStorage.getItem('portalUsers')) || [];
+                document.getElementById('admin-total-students').textContent = currentUsers.length;
                 document.getElementById('admin-total-announcements').textContent = MOCK_DATA.announcements.length;
                 document.getElementById('admin-total-events').textContent = MOCK_DATA.events.length;
             };
